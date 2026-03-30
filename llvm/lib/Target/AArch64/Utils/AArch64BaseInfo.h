@@ -458,10 +458,9 @@ struct SysAliasOptionalReg : SysAlias {
 struct TLBIPSysAlias : SysAliasOptionalReg {
   bool AllowWithTLBID;
 
-  constexpr TLBIPSysAlias(const char *N, uint16_t E, bool R, bool O,
+  constexpr TLBIPSysAlias(const char *N, uint16_t E, SysAliasRegUse R,
                           FeatureBitset F, bool AllowWithTLBID)
-      : SysAliasOptionalReg(N, E, R, O, F),
-        AllowWithTLBID(AllowWithTLBID) {}
+      : SysAliasOptionalReg(N, E, R, F), AllowWithTLBID(AllowWithTLBID) {}
 
   bool haveFeatures(FeatureBitset ActiveFeatures) const {
     return SysAliasOptionalReg::haveFeatures(ActiveFeatures) &&

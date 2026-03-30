@@ -2,6 +2,8 @@
 // RUN:        | FileCheck %s --check-prefixes=CHECK-ENCODING,CHECK-INST
 // RUN: not llvm-mc -triple=aarch64 -show-encoding < %s 2>&1 \
 // RUN:        | FileCheck %s --check-prefixes=CHECK-ERROR
+// RUN: not llvm-mc -triple=aarch64 -show-encoding -mattr=+tlbid < %s 2>&1 \
+// RUN:        | FileCheck %s --check-prefixes=CHECK-TLBID,CHECK-NOT-TLBID
 // RUN: llvm-mc -triple=aarch64 -filetype=obj -mattr=+d128 < %s \
 // RUN:        | llvm-objdump -d --mattr=+d128 --no-print-imm-hex - | FileCheck %s --check-prefix=CHECK-INST
 // RUN: llvm-mc -triple=aarch64 -filetype=obj -mattr=+d128 < %s \
